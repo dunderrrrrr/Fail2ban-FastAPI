@@ -3,12 +3,11 @@ import requests
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
-from _defs import main, get_jail
-from f2b import ban_ip, unban_ip, generate_files
+from f2b import ban_ip, unban_ip, get_jails, get_jail
 
 app = FastAPI()
-api_host = "localhost"
-api_port = 8000
+api_host = "0.0.0.0"
+api_port = 8999
 
 origins = [
     "*"
@@ -26,16 +25,9 @@ class Item(BaseModel):
     ip: str
     jail: str
 
-@app.get("/")
-def read_root():
-    uri = 'http://{}:{}/openapi.json'.format(api_host, api_port)
-    r = requests.get(uri)
-    return(r.json()['paths'])
-
 @app.get("/jails")
 def read_jails():
-    m = main()
-    return(m)
+    return(get_jails())
 
 @app.get("/jail/{jail}")
 def read_jail(jail):
@@ -51,11 +43,6 @@ async def ip_ban(item: Item):
 async def ip_unban(item: Item):
     unban = unban_ip(item.ip, item.jail)
     return item  
-
-@app.get("/refresh")
-def refresh():
-    generate_files()
-    return "OK" 
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host=api_host, port=api_port, reload=True)
