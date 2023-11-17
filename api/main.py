@@ -3,7 +3,8 @@ import requests
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
-from f2b import ban_ip, unban_ip, get_jails, get_jail
+from _defs import main, get_jail
+from f2b import ban_ip, unban_ip
 
 app = FastAPI()
 api_host = "0.0.0.0"
@@ -27,12 +28,11 @@ class Item(BaseModel):
 
 @app.get("/jails")
 def read_jails():
-    return(get_jails())
+    return(main())
 
 @app.get("/jail/{jail}")
 def read_jail(jail):
-    jail_data = get_jail(jail)
-    return (jail_data)
+    return(get_jail(jail))
 
 @app.post("/ban")
 async def ip_ban(item: Item):

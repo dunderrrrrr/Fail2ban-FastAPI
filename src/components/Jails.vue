@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     getJails () {
-      axios.get('http://127.0.0.1:8000/jails')
+      axios.get('http://172.16.43.109:8999/jails')
         .then((resp) => {
           this.apistatus = true
           this.jails = resp.data.jail
