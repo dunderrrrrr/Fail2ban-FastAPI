@@ -25,9 +25,21 @@ __copyright__ = "Copyright (c) 2004 Cyril Jaquier"
 __license__ = "GPL"
 
 from pickle import dumps, loads, HIGHEST_PROTOCOL
-from .protocol import CSPROTO
 import socket
 import sys
+
+
+class dotdict(dict):
+	def __getattr__(self, name):
+		return self[name]
+
+
+CSPROTO = dotdict({
+	"EMPTY":  b"",
+	"END":    b"<F2B_END_COMMAND>",
+	"CLOSE":  b"<F2B_CLOSE_COMMAND>"
+})
+
 
 class CSocket:
 	
