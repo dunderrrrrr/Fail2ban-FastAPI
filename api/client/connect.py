@@ -7,8 +7,7 @@ _conf = {
     "socket": "/var/run/fail2ban/fail2ban.sock"
 }
 
-timeout = 1
-client = CSocket(_conf["socket"], timeout=timeout)
+client = CSocket(_conf["socket"])
 
 def _transform(data):
     details = {}

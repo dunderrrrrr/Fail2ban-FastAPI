@@ -1,4 +1,4 @@
-from client.client import send_cmd
+from client.connect import send_cmd
 
 def get_jaildata(jail):
     data = {}
@@ -64,3 +64,11 @@ def get_jail(jail):
         return(obj_jail)
     else:
         return {"error": 404, "msg": "Jail name '{}' not found".format(jail)}
+
+def ban_ip(ip, jail):
+    print(f"Banning {ip} in jail {jail}")
+    return send_cmd(f'set {jail} banip {ip}')
+
+def unban_ip(ip, jail):
+    print(f"Unbanning {ip} in jail {jail}")
+    return send_cmd(f'set {jail} unbanip {ip}')
