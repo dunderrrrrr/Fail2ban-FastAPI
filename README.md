@@ -29,5 +29,12 @@ $ npm install
 $ npm run dev
 ```
 
-FastAPI backend can be access at `http://localhost:8000`.  
-Frontend access at `http://localhost:8080`.
+You can also use a docker for the front
+```bash
+$ docker build --tag fail2ban-front
+$ docker run -d -publish 8990:8990 --rm --name fail2ban-front fail2ban-front
+```
+
+
+FastAPI backend can be access at `http://localhost:8999`.  
+Frontend access at `http://localhost:8990`.
