@@ -1,0 +1,12 @@
+services:
+  backend:
+    image: "wazo-fail2ban-backend"
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+
+  frontend:
+    image: "wazo-fail2ban-frontend"
+    build:
+      context: .
+      dockerfile: ./Dockerfile

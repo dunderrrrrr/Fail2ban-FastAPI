@@ -1,0 +1,34 @@
+{
+  "manifestVersion": "0.1",
+  "version": "1.0.0",
+  "id": "wazo-fail2ban",
+  "packageName": "com.wazo.fail2ban",
+  "productType": "portal",
+  "developer": {
+    "name": "Wazo Communication Inc",
+    "websiteUrl": "https://wazo.io/",
+    "privacyUrl": "https://wazo.io/privacy"
+  },
+  "icons": {
+    "color": "./static/fail2ban.png"
+  },
+  "name": {
+    "short": "Fail2ban",
+    "full": "Fail2ban support for Wazo"
+  },
+  "description": {
+    "short": "Fail2ban support for portal",
+    "full": "Add fail2ban support to portal"
+  },
+  "staticTabs": [
+    {
+      "entityId": "fail2ban",
+      "context": [
+        "globalSettings"
+      ],
+      "name": "Fail2ban",
+      "icon": "warning",
+      "contentUrl": "/"
+    }
+  ]
+}

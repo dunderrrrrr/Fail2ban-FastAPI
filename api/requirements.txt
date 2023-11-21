@@ -1,0 +1,14 @@
+certifi
+chardet
+dataclasses
+fastapi==0.104.1
+h11
+httptools
+idna
+pydantic
+requests
+starlette
+urllib3
+uvicorn
+uvloop
+websockets

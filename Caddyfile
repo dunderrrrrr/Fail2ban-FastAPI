@@ -1,0 +1,36 @@
+(cors) {
+	@cors_preflight method OPTIONS
+	@cors header Origin {args.0}
+
+	handle @cors_preflight {
+		header Access-Control-Allow-Origin "{args.0}"
+		header Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE"
+		header Access-Control-Allow-Headers "Content-Type"
+		header Access-Control-Max-Age "3600"
+		respond "" 204
+	}
+
+	handle @cors {
+		header Access-Control-Allow-Origin "{args.0}"
+		header Access-Control-Expose-Headers "Link"
+	}
+}
+
+:80 {
+	root * /usr/share/caddy
+	route /api/* {
+		uri strip_prefix /api
+		reverse_proxy backend:8999
+	}
+	@try_files {
+		not path /static/*
+		not path /api/*
+		file {
+			try_files {path} {path}/ /index.html
+		}
+	}
+	rewrite @try_files {http.matchers.file.relative}
+	file_server
+
+	import cors *
+}

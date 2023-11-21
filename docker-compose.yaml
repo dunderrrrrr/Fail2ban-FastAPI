@@ -1,0 +1,14 @@
+services:
+  backend:
+    container_name: wazo-fail2ban-backend
+    image: "wazo-fail2ban-backend"
+    restart: unless-stopped
+    volumes:
+      - /var/run/fail2ban/fail2ban.sock:/var/run/fail2ban/fail2ban.sock
+
+  frontend:
+    container_name: wazo-fail2ban-frontend
+    image: "wazo-fail2ban-frontend"
+    restart: unless-stopped
+    ports:
+      - "8990:80"

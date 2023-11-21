@@ -96,7 +96,8 @@ export default {
   },
   methods: {
     getJails () {
-      axios.get('http://172.16.43.109:8999/jail/' + this.jail_name)
+      const url = `${window.location.protocol}//${window.location.hostname}/api/jail/${this.jail_name}`;
+      axios.get(url)
         .then((resp) => {
           this.jail_data = resp.data
           for (let key in resp.data) {
@@ -120,7 +121,8 @@ export default {
       if (this.banningIP) {
         if (validIP) {
           // POST ban
-          axios.post('http://172.16.43.109:8999/ban', {
+          const url = `${window.location.protocol}//${window.location.hostname}/api/ban`;
+          axios.post(url, {
               'ip': this.banningIP,
               'jail': this.jail_name,
             })
@@ -160,7 +162,8 @@ export default {
       this.$delete(this.banlist, index);
       console.log(this.banlist)
       // POST unban
-      axios.post('http://172.16.43.109:8999/unban', {
+      const url = `${window.location.protocol}//${window.location.hostname}/api/unban`;
+      axios.post(url, {
           'ip': ip,
           'jail': this.jail_name,
         })

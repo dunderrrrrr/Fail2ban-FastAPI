@@ -1,7 +1,6 @@
 <template>
   <div class="row">
     <div class="col-md-12">
-      <h1>Jails</h1>
       <div v-if="apistatus == false">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           Cannot connect to API - is it running?
@@ -64,7 +63,8 @@ export default {
   },
   methods: {
     getJails () {
-      axios.get('http://172.16.43.109:8999/jails')
+      const url = `${window.location.protocol}//${window.location.hostname}/api/jails`;
+      axios.get(url)
         .then((resp) => {
           this.apistatus = true
           this.jails = resp.data.jail
