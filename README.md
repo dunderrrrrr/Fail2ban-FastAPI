@@ -28,3 +28,5 @@ docker compose up -d
 To add the plugin inside Wazo portal add https://\<dns\>/manifest-portal.json
 
 Please note, https is mandatory and valid certificate is better.
+
+**THIS IS A PROOF OF CONCEPT DON'T USE IT IN PRODUCTION**
