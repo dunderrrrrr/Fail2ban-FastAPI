@@ -25,5 +25,6 @@ To launch the project
 docker compose up -d
 ```
 
-To add the plugin inside Wazo portal add https://<dns>/manifest-portal.json
+To add the plugin inside Wazo portal add https://\<dns\>/manifest-portal.json
+
 Please note, https is mandatory and valid certificate is better.
