@@ -6,7 +6,7 @@ Fail2Ban operates by monitoring log files (e.g. `/var/log/auth.log`, `/var/log/a
 **What is fail2ban for Wazo?**  
 Frontend (vuejs) and backend (fastapi). FastAPI reads it's data from the socket files created by Fail2ban.
 
-![Fail2ban-FastAPI Demo](https://i.imgur.com/7sQhGeh.gif)
+![Fail2ban Wazo Demo](./screenshots/wazo-fail2ban.png?raw=true)
 
 ## To launch the plugin
 
